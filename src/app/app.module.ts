@@ -13,6 +13,7 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { App } from './app.component';
 import { Courses } from './courses';
+import { CourseDetails } from './course.details';
 import { Login } from './login';
 import { NoContent } from './no-content';
 
@@ -24,6 +25,7 @@ const APP_PROVIDERS = [];
     declarations: [
         App,
         Courses,
+        CourseDetails,
         Login,
         NoContent
     ],

@@ -1,0 +1,27 @@
+<nav>
+    <span>
+        <a [routerLink]=" ['./'] ">
+            Home
+        </a>
+    </span>
+    |
+    <span>
+        <a [routerLink]=" ['./courses'] ">
+            Courses
+        </a>
+    </span>
+    |
+    <span>
+        <a [routerLink]=" ['./login'] ">
+            Login
+        </a>
+    </span>
+</nav>
+
+<main>
+    <router-outlet></router-outlet>
+</main>
+
+<footer>
+    <span>Footer</span>
+</footer>

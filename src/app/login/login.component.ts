@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'login',
     styles: [``],
-    template: `
-    `
+    templateUrl: './login.template.html'
 })
 
 export class Login {
