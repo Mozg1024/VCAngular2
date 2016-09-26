@@ -92,6 +92,8 @@
     "@types/webpack": "^1.12.29",
     "angular2-template-loader": "^0.5.0",
     "awesome-typescript-loader": "^2.2.1",
+    "bootstrap": "^3.3.7",
+    "bootstrap-loader": "^1.2.0",
     "codelyzer": "~0.0.28",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.25.0",
@@ -102,6 +104,7 @@
     "html-webpack-plugin": "^2.21.0",
     "imports-loader": "^0.6.5",
     "istanbul-instrumenter-loader": "^0.2.0",
+    "jquery": "^3.1.1",
     "json-loader": "^0.5.4",
     "karma": "^1.2.0",
     "karma-chrome-launcher": "^2.0.0 ",
@@ -134,10 +137,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/Mozg1024/VCAngular2.git"
   },
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/Mozg1024/VCAngular2/issues"
   },
   "engines": {
     "node": ">= 4.2.1",
