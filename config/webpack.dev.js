@@ -119,12 +119,6 @@ module.exports = function (options) {
                 }
             }),
 
-            new DefinePlugin({
-                jQuery: 'jquery',
-                $: 'jquery',
-                jquery: 'jquery'
-            }),
-
         /**
          * Plugin: NamedModulesPlugin (experimental)
          * Description: Uses file names as module name.

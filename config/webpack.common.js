@@ -14,6 +14,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 /*
  * Webpack Constants
@@ -175,6 +176,31 @@ module.exports = function(options) {
         {
           test: /\.(jpg|png|gif)$/,
           loader: 'file'
+        },
+
+        {
+            test: /\.less$/,
+            loader: 'style!css!less'
+        },
+        {
+            test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+            loader: "url?limit=10000&minetype=application/font-woff"
+        },
+        {
+          test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url?limit=10000&minetype=application/font-woff"
+        },
+        {
+          test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url?limit=10000&minetype=application/octet-stream"
+        },
+        {
+          test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "file"
+        },
+        {
+          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url?limit=10000&minetype=image/svg+xml"
         }
       ],
 
@@ -230,10 +256,16 @@ module.exports = function(options) {
        *
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
-      new CopyWebpackPlugin([{
-        from: 'src/assets',
-        to: 'assets'
-      }]),
+      new CopyWebpackPlugin([
+        {
+          from: 'src/assets',
+          to: 'assets'
+        },
+        {
+          from: 'node_modules/bootstrap/dist/css/bootstrap.css',
+          to: 'assets/css/bootstrap.css'
+        }
+      ]),
 
       /*
        * Plugin: HtmlWebpackPlugin
@@ -273,6 +305,12 @@ module.exports = function(options) {
       new HtmlElementsPlugin({
         headTags: require('./head-config.common')
       }),
+
+        new DefinePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery'
+        })
 
     ],
 

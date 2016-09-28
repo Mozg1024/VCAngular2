@@ -5,7 +5,7 @@
 
 // TODO(gdi2290): switch to DLLs
 
-import 'bootstrap';
+import 'bootstrap/dist/js/bootstrap.js';
 
 // Angular 2
 import '@angular/platform-browser';
