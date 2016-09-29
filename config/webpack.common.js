@@ -262,8 +262,8 @@ module.exports = function(options) {
           to: 'assets'
         },
         {
-          from: 'node_modules/bootstrap/dist/css/bootstrap.css',
-          to: 'assets/css/bootstrap.css'
+          from: 'node_modules/bootstrap/dist',
+          to: 'assets/vendors/bootstrap'
         }
       ]),
 

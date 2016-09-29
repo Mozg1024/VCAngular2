@@ -1,19 +1,29 @@
-<nav>
-    <span>
-        <a [routerLink]="['./']">Home</a>
-    </span>
-    |
-    <span>
-        <a [routerLink]="['./courses']">Courses</a>
-    </span>
-    |
-    <span>
-        <a [routerLink]="['./login']">Login</a>
-    </span>
-</nav>
+<header class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
 
-<main>
+        <ul class="nav navbar-nav">
+            <li>
+                <a [routerLink]="['./']">Home</a>
+            </li>
+            <li>
+                <a [routerLink]="['./courses']">Courses</a>
+            </li>
+            <li>
+                <a [routerLink]="['./login']">Login</a>
+            </li>
+        </ul>
+
+    </div>
+</header>
+
+<main class="container" role="main">
     <router-outlet></router-outlet>
 </main>
 
-<button type="button" class="btn btn-success" ngbTooltip="Success tooltip">Success</button>
+<footer class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-header col-xs-12 text-center">
+            <a [routerLink]="['./']" class="navbar-link">&copy; 2015</a>
+        </div>
+    </div>
+</footer>
