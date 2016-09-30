@@ -3,36 +3,37 @@
     <div class="alert alert-danger" role="alert" style="display: none;">
         Unknown username or password
     </div>
-    <!--[formGroup]="loginForm"-->
-    <form name="login8Form" role="form" novalidate >
+
+    <form name="login8Form" role="form" novalidate [formGroup]="loginForm">
 
         <div class="row">
-            <div class="form-group col-xs-6 col-xs-push-3 left-inner-addon">
+            <div class="form-group col-xs-6 col-xs-push-3 left-inner-addon"
+                 [ngClass]="{ 'has-error': loginForm.controls.login.touched && loginForm.controls.login.invalid }" >
                 <i class="glyphicon glyphicon-user"></i>
-                <input id="login" type="text" class="form-control" name="login" placeholder="Login" />
+                <input id="login" type="text" class="form-control" name="login" placeholder="Login" formControlName="login" />
             </div>
-            <!--formControlName="login"-->
 
-            <div class="has-error col-xs-3 col-xs-push-3" role="alert" *ngIf="loginForm.controls.login.dirty && loginForm.controls.login.hasError('required')">
+            <div class="has-error col-xs-3 col-xs-push-3" role="alert"
+                 *ngIf="loginForm.controls.login.touched && loginForm.controls.login.invalid">
                 <span class="help-block">* enter</span>
             </div>
         </div>
 
         <div class="row">
-            <div class="form-group col-xs-6 col-xs-push-3 left-inner-addon">
+            <div class="form-group col-xs-6 col-xs-push-3 left-inner-addon"
+                 [ngClass]="{ 'has-error': loginForm.controls.password.touched && loginForm.controls.password.invalid }" >
                 <i class="glyphicon glyphicon-lock"></i>
-                <input id="password" type="password" class="form-control" name="password" placeholder="Password" />
+                <input id="password" type="password" class="form-control" name="password" placeholder="Password" formControlName="password" />
             </div>
-            <!--formControlName="password"-->
 
-            <div class="has-error col-xs-3 col-xs-push-3" role="alert" *ngIf="loginForm.controls.password.hasError('required')">
+            <div class="has-error col-xs-3 col-xs-push-3" role="alert" *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
                 <span class="help-block">* enter</span>
             </div>
         </div>
 
         <div class="row">
             <div class="col-xs-6 col-xs-push-3">
-                <button type="submit" class="form-group btn btn-default">
+                <button type="submit" class="form-group btn btn-default" [disabled]="loginForm.invalid" >
                     <i class="glyphicon glyphicon-cloud-upload"></i>
                     Enter
                 </button>

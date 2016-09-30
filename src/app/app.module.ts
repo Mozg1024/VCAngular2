@@ -1,6 +1,6 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
@@ -33,11 +33,12 @@ const APP_PROVIDERS = [];
         BrowserModule,
         FormsModule,
         HttpModule,
-        RouterModule.forRoot(ROUTES, { useHash: true })
+        RouterModule.forRoot(ROUTES, { useHash: true }),
+        ReactiveFormsModule
     ],
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
-        APP_PROVIDERS
+        APP_PROVIDERS,
     ]
 })
 export class AppModule {
