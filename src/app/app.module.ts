@@ -17,8 +17,12 @@ import { CourseDetails } from './course.details';
 import { Login } from './login';
 import { NoContent } from './no-content';
 
+import { AuthService } from './services/auth.service';
+
 // Application wide providers
-const APP_PROVIDERS = [];
+const APP_PROVIDERS = [
+    AuthService
+];
 
 @NgModule({
     bootstrap: [ App ],
@@ -41,6 +45,7 @@ const APP_PROVIDERS = [];
         APP_PROVIDERS,
     ]
 })
+
 export class AppModule {
 
 }

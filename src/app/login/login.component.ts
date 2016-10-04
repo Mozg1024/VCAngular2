@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService, User } from './../services/auth.service';
 
 @Component({
@@ -11,34 +12,44 @@ import { AuthService, User } from './../services/auth.service';
 export class Login implements OnInit {
 
     loginForm: FormGroup;
-    user: User;
 
-    constructor (private builder: FormBuilder) {
+    constructor (private builder: FormBuilder,
+                 private authService: AuthService,
+                 private router: Router) {
     }
 
     ngOnInit () {
-        this.user = new User();
         this.loginForm = this.builder.group({});
-
         this.initializeForm();
     }
 
     initializeForm () {
         this.loginForm = this.builder.group({
             'login': [
-                this.user.login,
+                '',
                 [
                     Validators.required,
                     Validators.pattern('[A-Za-z]+')
                 ]
             ],
             'password': [
-                this.user.password,
+                '',
                 [
                     Validators.required,
                     Validators.pattern('[A-Za-z0-9]+')
                 ],
             ]
         });
+    }
+
+    onSubmit () {
+        this.authService.logIn(new User(this.loginForm.value.login, this.loginForm.value.password))
+            .subscribe( isUserCorrect => {
+                if (isUserCorrect) {
+                    this.router.navigate(['/courses']);
+                } else {
+                    this.loginForm.setErrors({ 'wrongLogin': true });
+                }
+            });
     }
 }

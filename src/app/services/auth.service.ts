@@ -1,41 +1,41 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
 
 @Injectable()
+
 export class AuthService {
     static LOGIN_KEY: string = 'login';
 
-    constructor(private http: Http) {
-    }
+    static CORRECT_LOGIN: string = 'q';
+    static CORRECT_PASSWORD: string = 'q';
 
-    logIn(login: string): Observable<boolean> {
-        return Observable.create(observer => {
+    constructor () {}
+
+    logIn (user: User): Observable <boolean> {
+        return Observable.create( observer => {
 
             setTimeout(() => {
-                let result = (login !== 'wrong');
-                if (result) {
-                    localStorage.setItem(AuthService.LOGIN_KEY, login);
+                let isLoginCorrect = (user.login === AuthService.CORRECT_LOGIN &&
+                                      user.password === AuthService.CORRECT_PASSWORD);
+                if (isLoginCorrect) {
+                    localStorage.setItem(AuthService.LOGIN_KEY, user.login);
                 }
-                observer.next(result);
+                observer.next(isLoginCorrect);
             }, 500);
 
         });
     }
 
-    isLoggedIn() {
+    isLoggedIn () {
         return !!localStorage.getItem(AuthService.LOGIN_KEY);
     }
 
-    logOff() {
+    logOff () {
         localStorage.removeItem(AuthService.LOGIN_KEY);
     }
 }
 
 export class User {
-    login: string = '';
-    password: string = '';
-
-    constructor () {}
+    constructor (public login: string,
+                 public password: string) {}
 }
