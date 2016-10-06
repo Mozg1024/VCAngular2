@@ -11,16 +11,17 @@ export class AuthService {
 
     constructor () {}
 
-    logIn (user: User): Observable <boolean> {
+    logIn (userLogin: string, userPassword: string): Observable <User> {
         return Observable.create( observer => {
 
             setTimeout(() => {
-                let isLoginCorrect = (user.login === AuthService.CORRECT_LOGIN &&
-                                      user.password === AuthService.CORRECT_PASSWORD);
-                if (isLoginCorrect) {
-                    localStorage.setItem(AuthService.LOGIN_KEY, user.login);
+                var user: User = null;
+                if (userLogin === AuthService.CORRECT_LOGIN &&
+                    userPassword === AuthService.CORRECT_PASSWORD) {
+                    localStorage.setItem(AuthService.LOGIN_KEY, userLogin);
+                    user = new User();
                 }
-                observer.next(isLoginCorrect);
+                observer.next(user);
             }, 500);
 
         });
@@ -36,6 +37,6 @@ export class AuthService {
 }
 
 export class User {
-    constructor (public login: string,
-                 public password: string) {}
+    public login: string;
+    constructor () {}
 }

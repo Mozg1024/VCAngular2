@@ -43,9 +43,9 @@ export class Login implements OnInit {
     }
 
     onSubmit () {
-        this.authService.logIn(new User(this.loginForm.value.login, this.loginForm.value.password))
-            .subscribe( isUserCorrect => {
-                if (isUserCorrect) {
+        this.authService.logIn(this.loginForm.value.login, this.loginForm.value.password)
+            .subscribe( user => {
+                if (user) {
                     this.router.navigate(['/courses']);
                 } else {
                     this.loginForm.setErrors({ 'wrongLogin': true });
