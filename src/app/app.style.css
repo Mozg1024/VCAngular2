@@ -5,11 +5,24 @@ html, body{
 
 body {
     padding-top: 80px;
-    padding-bottom: 80px;
+}
+
+main {
+    margin-bottom: 50px;
 }
 
 footer .navbar-link{
     line-height: 48px;
+}
+
+mark {
+    padding: 0;
+    background-color: #FFFF00;
+}
+
+h3 {
+    display: inline-block;
+    margin-top: 0;
 }
 
 .left-inner-addon {
@@ -24,4 +37,29 @@ footer .navbar-link{
     position: absolute;
     padding: 10px 12px;
     pointer-events: none;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #CCCCCC;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+
+.bs-callout-default {
+    border-left-width: 5px;
+    border-left-color: #BBBBBB;
+}
+
+.text-ellipsis {
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

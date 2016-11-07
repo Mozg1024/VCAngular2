@@ -1,3 +1,36 @@
 <div>
-    Courses page
+
+    <div class="row">
+
+        <div class="col-xs-9">
+            <input #courseFilter (input)="filter = courseFilter.value" type="text" class="form-control bs-callout-default" placeholder="Search for...">
+        </div>
+
+        <div class="col-xs-3">
+            <div class="btn-group pull-right" role="group">
+                <a [routerLink]="['/courses/new']" type="button" class="btn btn-default">Add course</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="bs-callout bs-callout-default" *ngFor="let course of getFilteredCourses()">
+                <div class="row">
+                    <div class="col-xs-9">
+                        <h3 class="pull-right">{{course.date | date:"dd.MM.yyyy"}}</h3>
+                        <h3 [highlightText]="filter">{{course.title}}</h3>
+                        <span class="time-string">{{course.length | minutesToHours}}</span>
+                        <p class="text-justify text-indent" [highlightText]="filter">{{course.description}}</p>
+                    </div>
+                    <div class="col-xs-3">
+                        <a [routerLink]="['/courses/' + course.id]" class="btn btn-success btn-block form-control text-ellipsis">Edit</a>
+                        <button class="btn btn-danger btn-block form-control text-ellipsis" (click)="deleteCourse(course.id)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

@@ -1,0 +1,4 @@
+<input type="text" class="form-control bs-callout-default"
+       placeholder="dd.mm.yyyy" #input
+       (input)="input.value = correctValue(input.value)"
+       [value]="dateString"/>

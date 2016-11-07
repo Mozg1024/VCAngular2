@@ -14,14 +14,21 @@ import { ROUTES } from './app.routes';
 import { App } from './app.component';
 import { Courses } from './courses';
 import { CourseDetails } from './course.details';
+import { DateInput } from './course.details/dateInput/dateInput.component';
 import { Login } from './login';
 import { NoContent } from './no-content';
 
 import { AuthService } from './services/auth.service';
+import { CoursesService } from './services/courses.service';
+
+import { MinutesToHoursPipe } from './pipes/minutesToHours.pipe';
+import { HighlightTextDirective } from './directives/highlightText.directive';
+
 
 // Application wide providers
 const APP_PROVIDERS = [
-    AuthService
+    AuthService,
+    CoursesService
 ];
 
 @NgModule({
@@ -30,8 +37,11 @@ const APP_PROVIDERS = [
         App,
         Courses,
         CourseDetails,
+        DateInput,
         Login,
-        NoContent
+        NoContent,
+        MinutesToHoursPipe,
+        HighlightTextDirective
     ],
     imports: [ // import Angular's modules
         BrowserModule,
@@ -49,4 +59,3 @@ const APP_PROVIDERS = [
 export class AppModule {
 
 }
-
